@@ -1,11 +1,13 @@
 const Vehicle = require("../models/vehicle")
+const User = require("../models/user")
 
 const create = async (req) => {
-    let { brand, price } = req.body
-    phone = parseInt(phone)
+    let { brand, price, owner } = req.body
+    price = parseInt(price)
     var insert_data = {
         brand,
-        price
+        price,
+        owner
     }
 
     let data = new Vehicle(insert_data)
@@ -19,20 +21,33 @@ const create = async (req) => {
     }
 }
 
-const getAll = async () => {
-    try {
-        let query = await Vehicle.find({}).exec()
-        let data = query.map((v, i) => {
-            return {
-                brand: v.brand,
-                price: v.price
-            }
-        })
+// const getAll = async () => {
+//     try {
+//         let query = await Vehicle.find({}).exec()
+//         let data = query.map((v, i) => {
+//             return {
+//                 brand: v.brand,
+//                 price: v.price
+//             }
+//         })
 
-        return data
-    } catch(err) {
-        throw err
-    }
+//         return data
+//     } catch(err) {
+//         throw err
+//     }
+// }
+
+const getAll = async () => {
+    let query = await Vehicle.find({})
+        .populate([
+            {
+                path: 'owner',
+                model: User
+            }
+        ]).exec()
+    console.log(`Result ${query}`)
+
+    return query
 }
 
 const getDetail = async (id) => {

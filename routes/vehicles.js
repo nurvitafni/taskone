@@ -14,6 +14,7 @@ router.post("/", async (req, res) => {
     } catch(err) {
         return res.status(400).json({
             status: "error",
+            data,
             message: err.message
         })
     }
@@ -31,6 +32,7 @@ router.get("/", async (req, res) => {
     } catch(err) {
         return res.status(400).json({
             status: "error",
+            data,
             message: err.message
         })
     }

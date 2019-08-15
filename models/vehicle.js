@@ -11,6 +11,7 @@ let vehicleSchema = new Schema({
         type: Number,
         default: 0
     },
+    owner: String,
     created_at: {
         type: Date,
         default: Date.now
