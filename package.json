@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/nurvitafni/taskone#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "mongoose": "^5.6.9",
